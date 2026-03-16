@@ -5,7 +5,8 @@
   "scripts": {
     "pbiviz": "pbiviz",
     "start": "pbiviz start",
-    "package": "pbiviz package"
+    "package": "pbiviz package",
+    "lint": "npx eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
     "@babel/runtime": "^7.28.6",
@@ -16,6 +17,9 @@
     "powerbi-visuals-utils-dataviewutils": "2.2.1"
   },
   "devDependencies": {
+    "@typescript-eslint/parser": "^8.57.1",
+    "eslint": "^8.57.1",
+    "eslint-plugin-powerbi-visuals": "^1.1.0",
     "ts-loader": "6.1.0",
     "typescript": "~4.9.5"
   }

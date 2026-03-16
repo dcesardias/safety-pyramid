@@ -1,0 +1,16 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "plugins": ["powerbi-visuals"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "rules": {
+    "powerbi-visuals/no-banned-terms": "error",
+    "powerbi-visuals/no-implied-inner-html": "error"
+  }
+}

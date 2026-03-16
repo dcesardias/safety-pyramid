@@ -479,13 +479,11 @@ export class SafetyPyramid implements IVisual {
                         .attr("stroke-width", 2.5)
                         .style("opacity", 0.88);
 
-                    self.tooltipDiv
-                        .style("opacity", 1)
-                        .html(
-                            `<div class="tt-title">${lv.category}</div>` +
-                            `<div class="tt-value">${formatValue(lv.value, valueFormat, valueDecimals)}</div>` +
-                            `<div class="tt-pct">${ptBR.format(`.${pctDecimals}f`)(lv.percentage)}% do total</div>`
-                        );
+                    self.tooltipDiv.style("opacity", 1);
+                    self.tooltipDiv.selectAll("*").remove();
+                    self.tooltipDiv.append("div").classed("tt-title", true).text(lv.category);
+                    self.tooltipDiv.append("div").classed("tt-value", true).text(formatValue(lv.value, valueFormat, valueDecimals));
+                    self.tooltipDiv.append("div").classed("tt-pct", true).text(`${ptBR.format(`.${pctDecimals}f`)(lv.percentage)}% do total`);
                 })
                 .on("mousemove", function(event: MouseEvent) {
                     const rect = self.rootElement.getBoundingClientRect();
@@ -679,11 +677,11 @@ export class SafetyPyramid implements IVisual {
                 .on("mouseover", function() {
                     d3.select(this).selectAll("polygon")
                         .attr("stroke", "#fff").attr("stroke-width", 1.5).style("opacity", 0.88);
-                    self.tooltipDiv.style("opacity", 1).html(
-                        `<div class="tt-title">${lv.category}</div>` +
-                        `<div class="tt-value">${formatValue(lv.value, valueFormat, valueDecimals)}</div>` +
-                        `<div class="tt-pct">${ptBR.format(`.${pctDecimals}f`)(lv.percentage)}% do total</div>`
-                    );
+                    self.tooltipDiv.style("opacity", 1);
+                    self.tooltipDiv.selectAll("*").remove();
+                    self.tooltipDiv.append("div").classed("tt-title", true).text(lv.category);
+                    self.tooltipDiv.append("div").classed("tt-value", true).text(formatValue(lv.value, valueFormat, valueDecimals));
+                    self.tooltipDiv.append("div").classed("tt-pct", true).text(`${ptBR.format(`.${pctDecimals}f`)(lv.percentage)}% do total`);
                 })
                 .on("mousemove", function(event: MouseEvent) {
                     const rect = self.rootElement.getBoundingClientRect();
