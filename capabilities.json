@@ -1,0 +1,206 @@
+{
+  "dataRoles": [
+    {
+      "displayName": "Categoria",
+      "name": "category",
+      "kind": "Grouping",
+      "description": "Nome do nível da pirâmide (ex: Circunstância, Sem Dano, Dano Leve...)"
+    },
+    {
+      "displayName": "Valor",
+      "name": "measure",
+      "kind": "Measure",
+      "description": "Quantidade de ocorrências para cada nível"
+    }
+  ],
+  "dataViewMappings": [
+    {
+      "conditions": [
+        {
+          "category": { "max": 1 },
+          "measure": { "max": 1 }
+        }
+      ],
+      "categorical": {
+        "categories": {
+          "for": { "in": "category" },
+          "dataReductionAlgorithm": {
+            "top": { "count": 10 }
+          }
+        },
+        "values": {
+          "select": [
+            { "bind": { "to": "measure" } }
+          ]
+        }
+      }
+    }
+  ],
+  "objects": {
+    "legend": {
+      "displayName": "Legenda",
+      "properties": {
+        "show": {
+          "displayName": "Mostrar Legenda",
+          "type": { "bool": true }
+        },
+        "title": {
+          "displayName": "Título da Legenda",
+          "type": { "text": true }
+        },
+        "fontSize": {
+          "displayName": "Tamanho da Fonte",
+          "type": { "numeric": true }
+        }
+      }
+    },
+    "labels": {
+      "displayName": "Rótulos",
+      "properties": {
+        "showPercentage": {
+          "displayName": "Mostrar Percentual",
+          "type": { "bool": true }
+        },
+        "fontFamily": {
+          "displayName": "Fonte",
+          "type": { "formatting": { "fontFamily": true } }
+        },
+        "valueFontSize": {
+          "displayName": "Tamanho do Valor",
+          "type": { "numeric": true }
+        },
+        "valueBold": {
+          "displayName": "Valor em Negrito",
+          "type": { "bool": true }
+        },
+        "valueColor": {
+          "displayName": "Cor do Valor",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "valueFormat": {
+          "displayName": "Formato do Valor",
+          "type": {
+            "enumeration": [
+              { "value": "thousands", "displayName": "Separador de Milhar  (1.234)" },
+              { "value": "abbreviated", "displayName": "Abreviado  (1,2K / 1,2M)" },
+              { "value": "none", "displayName": "Nenhum  (1234)" }
+            ]
+          }
+        },
+        "valueDecimals": {
+          "displayName": "Casas Decimais do Valor",
+          "type": { "numeric": true }
+        },
+        "percentageBold": {
+          "displayName": "Percentual em Negrito",
+          "type": { "bool": true }
+        },
+        "percentageColor": {
+          "displayName": "Cor do Percentual",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "percentageDecimals": {
+          "displayName": "Casas Decimais do Percentual",
+          "type": { "numeric": true }
+        },
+        "categoryFontSize": {
+          "displayName": "Tamanho da Categoria",
+          "type": { "numeric": true }
+        },
+        "categoryBold": {
+          "displayName": "Categoria em Negrito",
+          "type": { "bool": true }
+        },
+        "categoryColor": {
+          "displayName": "Cor da Categoria",
+          "type": { "fill": { "solid": { "color": true } } }
+        }
+      }
+    },
+    "colors": {
+      "displayName": "Cores",
+      "properties": {
+        "level1Color": {
+          "displayName": "Cor Nível 1 (Base)",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "level2Color": {
+          "displayName": "Cor Nível 2",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "level3Color": {
+          "displayName": "Cor Nível 3",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "level4Color": {
+          "displayName": "Cor Nível 4",
+          "type": { "fill": { "solid": { "color": true } } }
+        },
+        "level5Color": {
+          "displayName": "Cor Nível 5 (Topo)",
+          "type": { "fill": { "solid": { "color": true } } }
+        }
+      }
+    },
+    "pyramid": {
+      "displayName": "Pirâmide",
+      "properties": {
+        "gapBetweenLevels": {
+          "displayName": "Espaço entre Níveis",
+          "type": { "numeric": true }
+        },
+        "borderRadius": {
+          "displayName": "Arredondamento",
+          "type": { "numeric": true }
+        },
+        "invertPyramid": {
+          "displayName": "Pirâmide Invertida",
+          "description": "Exibe a base larga no topo (pirâmide de funil)",
+          "type": { "bool": true }
+        },
+        "proportionalHeight": {
+          "displayName": "Altura Proporcional ao Valor",
+          "description": "Cada nível recebe altura proporcional ao seu valor ao invés de distribuição uniforme",
+          "type": { "bool": true }
+        },
+        "minLevelHeightPct": {
+          "displayName": "Altura Mínima por Nível (%)",
+          "description": "Percentual mínimo de altura de cada nível — evita que valores pequenos fiquem invisíveis",
+          "type": { "numeric": true }
+        },
+        "maxLevelHeightPct": {
+          "displayName": "Altura Máxima por Nível (%)",
+          "description": "Percentual máximo de altura de cada nível — evita que um valor alto domine toda a pirâmide",
+          "type": { "numeric": true }
+        },
+        "labelsOutside": {
+          "displayName": "Rótulos Fora da Pirâmide",
+          "description": "Exibe os rótulos ao lado da pirâmide com linha de chamada",
+          "type": { "bool": true }
+        },
+        "show3D": {
+          "displayName": "Efeito 3D",
+          "description": "Adiciona faces lateral e superior para efeito de profundidade",
+          "type": { "bool": true }
+        },
+        "depth3DPct": {
+          "displayName": "Profundidade 3D (%)",
+          "description": "Profundidade do efeito 3D em relação à largura da pirâmide (2–25)",
+          "type": { "numeric": true }
+        }
+      }
+    }
+  },
+  "privileges": [],
+  "supportsHighlight": true,
+  "tooltips": {
+    "supportedTypes": {
+      "default": true,
+      "canvas": true
+    },
+    "roles": ["tooltips"]
+  },
+  "sorting": {
+    "default": {}
+  }
+}

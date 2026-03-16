@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.tmp/
+.api/
+.claude/
+webpack.statistics.prod.html

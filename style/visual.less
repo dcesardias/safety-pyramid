@@ -1,0 +1,62 @@
+// ─── Safety Pyramid Visual ────────────────────────────────────────────────────
+
+.safety-pyramid-svg {
+    font-family: "Segoe UI", "Inter", "Helvetica Neue", Arial, sans-serif;
+    user-select: none;
+}
+
+// ─── Pyramid levels ───────────────────────────────────────────────────────────
+.pyramid-level {
+    polygon {
+        transition: opacity 0.2s ease, stroke-width 0.15s ease;
+    }
+
+    &:hover polygon {
+        opacity: 0.88;
+    }
+}
+
+.level-value {
+    letter-spacing: -0.5px;
+}
+
+.level-category {
+    letter-spacing: 0.2px;
+}
+
+// ─── Tooltip ──────────────────────────────────────────────────────────────────
+.pyramid-tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: rgba(20, 20, 30, 0.92);
+    border-radius: 8px;
+    padding: 10px 14px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    color: #fff;
+    min-width: 160px;
+    z-index: 999;
+    backdrop-filter: blur(4px);
+    transition: opacity 0.15s ease;
+
+    .tt-title {
+        font-size: 11px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.7);
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        margin-bottom: 4px;
+    }
+
+    .tt-value {
+        font-size: 22px;
+        font-weight: 700;
+        color: #ffffff;
+        line-height: 1.1;
+    }
+
+    .tt-pct {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.55);
+        margin-top: 3px;
+    }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "safety-pyramid",
+  "version": "1.0.0",
+  "description": "Heinrich Safety Pyramid Power BI Custom Visual",
+  "scripts": {
+    "pbiviz": "pbiviz",
+    "start": "pbiviz start",
+    "package": "pbiviz package"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.28.6",
+    "@babel/runtime-corejs2": "^7.28.6",
+    "core-js": "3.2.1",
+    "d3": "^7.9.0",
+    "powerbi-visuals-api": "^5.11.0",
+    "powerbi-visuals-utils-dataviewutils": "2.2.1"
+  },
+  "devDependencies": {
+    "ts-loader": "6.1.0",
+    "typescript": "~4.9.5"
+  }
+}
