@@ -111,6 +111,7 @@ export class SafetyPyramid implements IVisual {
         this.host = options.host;
         this.rootElement = options.element;
         this.selectionManager = this.host.createSelectionManager();
+        this.selectionManager.registerOnSelectCallback(() => { /* required for context menu */ });
 
         this.svg = d3
             .select(options.element)
@@ -135,6 +136,16 @@ export class SafetyPyramid implements IVisual {
             .attr("flood-color", "rgba(0,0,0,0.22)");
 
         this.container = this.svg.append("g").classed("pyramid-container", true);
+
+        // Context menu on empty area clears selection
+        const self = this;
+        this.svg.on("contextmenu", function(event: MouseEvent) {
+            event.preventDefault();
+            self.selectionManager.showContextMenu(
+                null,
+                { x: event.clientX, y: event.clientY }
+            );
+        });
 
         this.tooltipDiv = d3
             .select(options.element)
@@ -500,6 +511,13 @@ export class SafetyPyramid implements IVisual {
                 })
                 .on("click", function() {
                     self.selectionManager.select(lv.selectionId, true);
+                })
+                .on("contextmenu", function(event: MouseEvent) {
+                    event.preventDefault();
+                    self.selectionManager.showContextMenu(
+                        lv.selectionId,
+                        { x: event.clientX, y: event.clientY }
+                    );
                 });
         });
         } // end if (!show3D)
@@ -697,6 +715,13 @@ export class SafetyPyramid implements IVisual {
                 })
                 .on("click", function() {
                     self.selectionManager.select(lv.selectionId, true);
+                })
+                .on("contextmenu", function(event: MouseEvent) {
+                    event.preventDefault();
+                    self.selectionManager.showContextMenu(
+                        lv.selectionId,
+                        { x: event.clientX, y: event.clientY }
+                    );
                 });
         });
 
